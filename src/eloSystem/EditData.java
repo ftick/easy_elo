@@ -27,7 +27,7 @@ package eloSystem;
 import java.util.*;
 import java.io.*;
 
-public class editData
+public class EditData
 {
 	
 	static Scanner scan;
