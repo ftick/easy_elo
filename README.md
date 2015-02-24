@@ -1,2 +1,2 @@
-# ELO System
-Scoreboard
+# Easy ELO
+Easy to Use ELO Rating System
