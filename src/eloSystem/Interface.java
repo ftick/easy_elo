@@ -20,13 +20,15 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class Interface extends JFrame implements ActionListener(){
+public class Interface extends JFrame implements ActionListener
+{
 	private static final long serialVersionUID = 1L;
 	
 	public Interface ( String title ){
 		super( title );
 		
-		setLayout( new GridBagLayout );
+		JPanel pane = new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
