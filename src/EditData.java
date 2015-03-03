@@ -27,7 +27,6 @@ import java.io.*;
 
 public class EditData
 {
-	
 	static Scanner scan;
 	static Entry[] entriesAcc;
 	static String[] namesAcc;
@@ -59,8 +58,7 @@ public class EditData
 		{
 			case 1:
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				inList = true;
 				while(inList)
 				{
@@ -85,8 +83,7 @@ public class EditData
 			case 2:
 				inList = false;
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				while(!inList)
 				{
 					System.out.print("\nName: ");
@@ -110,8 +107,7 @@ public class EditData
 			case 3:
 				inList = false;
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				while(!inList)
 				{
 					System.out.print("\nName: ");
@@ -135,8 +131,7 @@ public class EditData
 			case 4:
 				inList = false;
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				while(!inList)
 				{
 					System.out.print("\nName: ");
@@ -157,32 +152,28 @@ public class EditData
 			case 5:
 				alphaSort("<");
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				update();
 				break;
 				
 			case 6:
 				alphaSort(">");
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				update();
 				break;
 			
 			case 7:
 				eloSort(">");
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				update();
 				break;
 			
 			case 8:
 				eloSort("<");
 				System.out.println("\nENTRIES\n");
-				for(int i = 0; i < maxRow - 1; i++)
-					System.out.println(entriesAcc[i].name);
+				show();
 				update();
 				break;
 				
@@ -446,6 +437,11 @@ public class EditData
             entriesAcc[i].score = diffNumber;
             entriesAcc[i].name = diffString;
         }
+	}
+	
+	public static void show(){
+		for(int i = 0; i < maxRow - 1; i++)
+			System.out.println(entriesAcc[i].name);
 	}
 	
 	public static void update() throws IOException 

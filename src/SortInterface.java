@@ -18,11 +18,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class Interface extends JFrame implements ActionListener
-{
+public class SortInterface extends JFrame implements ActionListener{
+	
 	private static final long serialVersionUID = 1L;
 	
-	public Interface ( String title ){
+	
+	
+	public SortInterface ( String title ){
 		super( title );
 		
 		JPanel pane = new JPanel(new GridBagLayout());
@@ -36,11 +38,10 @@ public class Interface extends JFrame implements ActionListener
 		
 	}
 	
-	public static void main( String[] args )
-	{
-		Interface frame  = new Interface( "Interface" );
+	public static void main( String[] args ){
+		SortInterface frame  = new SortInterface( "Sort Entries" );
 	    
-   		frame.setSize( 600, 600 );
+   		frame.setSize( 300, 200 );
     	frame.setVisible(true);  
     	frame.setResizable(false);
 	}
