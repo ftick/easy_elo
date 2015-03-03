@@ -18,13 +18,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class EditInterface extends JFrame implements ActionListener{
+public class makeRemove extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
 	
 	
-	public EditInterface ( String title ){
+	public makeRemove ( String title ){
 		super( title );
 		
 		JPanel pane = new JPanel(new GridBagLayout());
@@ -39,7 +39,7 @@ public class EditInterface extends JFrame implements ActionListener{
 	}
 	
 	public static void main( String[] args ){
-		EditInterface frame  = new EditInterface( "Edit Entries" );
+		makeRemove frame  = new makeRemove( "Remove Entries" );
 	    
    		frame.setSize( 300, 200 );
     	frame.setVisible(true);  

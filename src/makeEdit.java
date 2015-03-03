@@ -18,13 +18,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class SortInterface extends JFrame implements ActionListener{
+public class makeEdit extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
 	
 	
-	public SortInterface ( String title ){
+	public makeEdit ( String title ){
 		super( title );
 		
 		JPanel pane = new JPanel(new GridBagLayout());
@@ -39,7 +39,7 @@ public class SortInterface extends JFrame implements ActionListener{
 	}
 	
 	public static void main( String[] args ){
-		SortInterface frame  = new SortInterface( "Sort Entries" );
+		makeEdit frame  = new makeEdit( "Edit Entries" );
 	    
    		frame.setSize( 300, 200 );
     	frame.setVisible(true);  

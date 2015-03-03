@@ -5,7 +5,6 @@ public class test {
 	public static void main(String[] args) throws IOException {
 		
 		EditData.readFile();
-		EditData.show();
 		
 		// addEntry( String name, int score )
 		// editName( String name, String name2 )
@@ -13,6 +12,12 @@ public class test {
 		// removeEntry( String name )
 		// alphaSort( String s )				"<" -> small2big
 		// eloSort( String s )					">" -> big2small
+		// show( )
+		// show( String s )
+		
+		EditData.show("");
+		
+		
 		
 	}
 }

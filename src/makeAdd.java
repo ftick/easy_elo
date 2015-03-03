@@ -18,14 +18,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class HomeInterface extends JFrame implements ActionListener{
+public class makeAdd extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
-	JButton editButton = new JButton("Edit Entries");
-	JButton sortButton = new JButton("Sort Entries");
 	
-	public HomeInterface ( String title ){
+	
+	public makeAdd ( String title ){
 		super( title );
 		
 		JPanel pane = new JPanel(new GridBagLayout());
@@ -40,9 +39,9 @@ public class HomeInterface extends JFrame implements ActionListener{
 	}
 	
 	public static void main( String[] args ){
-		HomeInterface frame  = new HomeInterface( "Home" );
+		makeAdd frame  = new makeAdd( "Add Entries" );
 	    
-   		frame.setSize( 600, 400 );
+   		frame.setSize( 300, 200 );
     	frame.setVisible(true);  
     	frame.setResizable(false);
 	}

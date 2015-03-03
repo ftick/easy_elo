@@ -444,6 +444,11 @@ public class EditData
 			System.out.println(entriesAcc[i].name);
 	}
 	
+	public static void show(String s){
+		for(int i = 0; i < maxRow - 1; i++)
+			System.out.println(entriesAcc[i].name + " " + entriesAcc[i].score);
+	}
+	
 	public static void update() throws IOException 
 	{
 		PrintWriter file;
