@@ -15,6 +15,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -35,14 +36,27 @@ public class makeSort extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed( ActionEvent e){
-		
+		// Destroy and hide the JFrame object
+		setVisible(false);
+		dispose();
+		try {
+			Interface.run();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public static void main( String[] args ){
-		makeSort frame  = new makeSort( "Sort Entries" );
+		run();
+	}
+
+	public static void run() {
+		// TODO Auto-generated method stub
+		makeSort frame1  = new makeSort( "Sort Entries" );
 	    
-   		frame.setSize( 300, 200 );
-    	frame.setVisible(true);  
-    	frame.setResizable(false);
+   		frame1.setSize( 300, 200 );
+    	frame1.setVisible(true);  
+    	frame1.setResizable(false);
 	}
 }

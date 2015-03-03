@@ -262,6 +262,37 @@ public class EditData
 		return maxRow + 1;
 	}
 	
+	public static int entryCount( String file, String s ) throws IOException
+	{
+		// Declare variables
+		BufferedReader count;
+		String text;
+		int maxRow;
+		
+		// Add things from file to scores
+		count = new BufferedReader(new FileReader( file ));
+		text = count.readLine();
+		maxRow = 0;
+		
+		// Find number of rows
+		while(count.ready())
+		{
+			try
+			{
+				Integer.parseInt(text);
+			}
+			catch (NumberFormatException e)
+			{
+				maxRow++;
+			}
+			// Set text to next line
+			text = count.readLine();
+		}
+		
+		count.close();
+		return maxRow + 1;
+	}
+	
 	public static int getInt( String text ) 
 	{
 		String resultStr;

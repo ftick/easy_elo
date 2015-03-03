@@ -15,6 +15,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -22,67 +23,79 @@ public class Interface extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
-	JTextField entries = new JTextField();
+	JLabel entryLabel = new JLabel("Entries");
+	TextArea entryBox = new TextArea();
 	
 	JButton addButton = new JButton("Add Entries");
 	JButton removeButton = new JButton("Remove Entries");
 	JButton editButton = new JButton("Edit Entries");
 	JButton sortButton = new JButton("Sort Entries");
 	
-	public Interface ( String title ){
+	public Interface ( String title ) throws IOException{
 		super( title );
 		
-		JPanel pane = new JPanel(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		EditData.readFile();
+		int entries = EditData.entryCount(EditData.fileName, "");
+		Entry[] entryList = EditData.entriesAcc;
 		
-		c.weightx = 0.5;
-		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(15,15,0,0);
-//	    c.gridx = 0;
-	    c.gridy = 0;
-		pane.add(entries, c);
+		if(entries==0)
+			entryBox.setText(entryList[0].name + " " + entryList[0].score);
 		
-		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(10,10,0,10);
-	    c.gridx = 0;
-	    c.gridy = 1;
-		pane.add(addButton, c);
+		for(int i = 1; i < entries-1; i++)
+		{
+			entryBox.setText(entryBox.getText() + "\n"
+					+ entryList[i].name + "   " + entryList[i].score);
+		}
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
-//		c.insets = new Insets(10,10,0,0);
-	    c.gridx = 1;
-	    c.gridy = 1;
-		pane.add(editButton, c);
+		setLayout(new FlowLayout());
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
-//		c.insets = new Insets(10,10,0,0);
-	    c.gridx = 2;
-	    c.gridy = 1;
-		pane.add(removeButton, c);
+		add(entryLabel);
+		add(entryBox);
 		
-		c.fill = GridBagConstraints.BOTH;
-//		c.insets = new Insets(10,10,0,10);
-	    c.gridx = 3;
-	    c.gridy = 1;
-		pane.add(sortButton, c);
+		add(addButton);
+		add(editButton);
+		add(removeButton);
+		add(sortButton);
 		
-		add(pane);
+		entryLabel.setFont(entryLabel.getFont().deriveFont(Font.BOLD, 32.0f));
+		entryBox.setEditable(false);
 		
-		entries.setEditable(false);
+		addButton.addActionListener(this);
+		editButton.addActionListener(this);
+		removeButton.addActionListener(this);
+		sortButton.addActionListener(this);
 		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
 	@Override
-	public void actionPerformed( ActionEvent e){
+	public void actionPerformed( ActionEvent evt){
+		JButton button = (JButton)evt.getSource();
 		
+		// Destroy and hide the JFrame object
+		setVisible(false);
+		dispose();
+		
+		if(button.equals(addButton)){
+			makeAdd.run();
+		}else if(button.equals(editButton)){
+			makeEdit.run();
+		}else if(button.equals(removeButton)){
+			makeRemove.run();
+		}else if(button.equals(sortButton)){
+			makeSort.run();
+		}
 	}
 	
-	public static void main( String[] args ){
+	public static void main( String[] args ) throws IOException{
+		run();
+	}
+	
+	public static void run() throws IOException{
 		Interface frame  = new Interface( "Home" );
 	    
-   		frame.setSize( 400, 300 );
+   		frame.setSize( 475, 305 );
     	frame.setVisible(true);  
-    	frame.setResizable(false);
+//    	frame.setResizable(false);
 	}
 }

@@ -15,6 +15,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -35,14 +36,27 @@ public class makeRemove extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed( ActionEvent e){
-		
+		// Destroy and hide the JFrame object
+		setVisible(false);
+		dispose();
+		try {
+			Interface.run();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public static void main( String[] args ){
-		makeRemove frame  = new makeRemove( "Remove Entries" );
+		run();
+	}
+
+	public static void run() {
+		// TODO Auto-generated method stub
+		makeRemove frame1  = new makeRemove( "Remove Entries" );
 	    
-   		frame.setSize( 300, 200 );
-    	frame.setVisible(true);  
-    	frame.setResizable(false);
+   		frame1.setSize( 300, 200 );
+    	frame1.setVisible(true);  
+    	frame1.setResizable(false);
 	}
 }
