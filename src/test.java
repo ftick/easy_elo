@@ -9,6 +9,7 @@ public class test {
 		
 		/*
 		 * EditData Functions
+		 * 
 		 * addEntry( String name, int score )
 		 * editName( String name, String name2 )
 		 * editScore( String name, int score )
