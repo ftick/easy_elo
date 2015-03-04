@@ -1,2 +1,2 @@
 # EasyELO
-Easy to Use ELO Rating System
+Easy to Use User Database System
