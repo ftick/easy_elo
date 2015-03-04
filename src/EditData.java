@@ -361,6 +361,59 @@ public class EditData
 		}
 	}
 	
+	public static void readFile( String s ) throws IOException
+	{
+		// Declare variables
+		BufferedReader file;
+		String[] names;
+		String text;
+		String name;
+		int[] scores;
+		int row;
+		int score;
+		
+		// Add things from file to scores
+		file = new BufferedReader(new FileReader( fileName ));
+		text = file.readLine();
+		
+		// Find number of entries
+		maxRow = entryCount( fileName, s );
+		
+		// Create arrays with appropriate size
+		names = new String[ maxRow ];
+		scores = new int[ maxRow ];
+		
+		namesAcc = new String[ maxRow - 1 ];
+		scoresAcc = new int[ maxRow - 1 ];
+		entriesAcc = new Entry[ maxRow - 1];
+		
+		for(row = 2; row <= maxRow + 1; row++)
+		{
+			name = getStr(text);
+			score = getInt(text);
+			
+			names[row-2] = name;
+			scores[row-2] = score;
+			
+			text = file.readLine();
+		}
+		
+		file.close();
+		
+		for(int i = 1; i < maxRow; i++)
+		{
+			names[i-1] = names[i];
+			scores[i-1] = scores[i];
+		}
+		
+		for(int x = 0; x < maxRow - 1; x++)
+		{
+			namesAcc[x] = names[x];
+			scoresAcc[x] = scores[x];
+			entriesAcc[x] = new Entry(namesAcc[x], scoresAcc[x]);
+		}
+	}
+	
 	public static void addEntry( String name, int score ) throws IOException
 	{
 		PrintWriter file;
@@ -410,6 +463,21 @@ public class EditData
 	}
 	
 	public static void removeEntry( String name ) throws IOException
+	{
+		PrintWriter file;
+		file = new PrintWriter(new FileWriter( fileName ));
+		
+		file.println("NAME 0");
+		
+		for(int s = 0; s < maxRow - 1; s++)
+		{
+			if(!name.toLowerCase().equals(entriesAcc[s].name.toLowerCase()))
+				file.println(entriesAcc[s].name + " " + entriesAcc[s].score);
+		}
+		file.close();
+	}
+	
+	public static void removeEntry( String name, int score ) throws IOException
 	{
 		PrintWriter file;
 		file = new PrintWriter(new FileWriter( fileName ));
