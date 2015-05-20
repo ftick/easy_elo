@@ -23,13 +23,40 @@ public class makeAdd extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
+	JLabel nameLabel = new JLabel("Name: ");
+	JLabel scoreLabel = new JLabel("Score: ");
 	
+	TextField nameText = new TextField(5);
+	TextField scoreText = new TextField(5);
+	
+	JButton addButton = new JButton("Add");
 	
 	public makeAdd ( String title ){
 		super( title );
 		
 		JPanel pane = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		
+		c.weightx = 0.5;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(15,15,0,0);
+	    c.gridx = 0;
+	    c.gridy = 0;
+		pane.add(nameLabel, c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(15,15,0,0);
+	    c.gridx = 1;
+	    c.gridy = 0;
+		pane.add(nameText, c);
+		
+		pane.add(scoreLabel, c);
+		
+		pane.add(scoreText, c);
+		
+		pane.add(addButton, c);
+		
+		add(pane);
 		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
