@@ -50,22 +50,46 @@ public class makeAdd extends JFrame implements ActionListener{
 	    c.gridy = 0;
 		pane.add(nameText, c);
 		
+		c.weightx = 0.5;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+	    c.gridy = 1;
 		pane.add(scoreLabel, c);
 		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+	    c.gridy = 1;
 		pane.add(scoreText, c);
 		
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 2;
+	    c.gridy = 1;
 		pane.add(addButton, c);
 		
 		add(pane);
+		
+		addButton.addActionListener(this);
 		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
 	@Override
 	public void actionPerformed( ActionEvent e) {
-		// Destroy and hide the JFrame object
-		setVisible(false);
-		dispose();
+		
+		JButton button = (JButton)e.getSource();
+		
+		if(button.equals(addButton)){
+			try {
+				EditData.addEntry(nameText.getText(),Integer.parseInt(scoreText.getText()));
+			} catch (NumberFormatException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			// Destroy and hide the JFrame object
+			setVisible(false);
+			dispose();
+		}
+		
 		try {
 			Interface.run();
 		} catch (IOException e1) {

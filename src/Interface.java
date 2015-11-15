@@ -41,7 +41,9 @@ public class Interface extends JFrame implements ActionListener{
 		if(entries==0)
 			entryBox.setText(entryList[0].name + " " + entryList[0].score);
 		
-		for(int i = 1; i < entries-1; i++)
+		int count = entries;
+		if(entries > 1) count--;
+		for(int i = 0; i < count; i++)
 		{
 			entryBox.setText(entryBox.getText() + "\n"
 					+ entryList[i].name + "   " + entryList[i].score);

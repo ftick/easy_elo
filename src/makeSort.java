@@ -23,7 +23,10 @@ public class makeSort extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
-	
+	JButton alphaUpButton = new JButton("Alpha HI->LO");
+	JButton alphaDownButton = new JButton("Alpha LO->HI");
+	JButton eloUpButton = new JButton("Elo HI->LO");
+	JButton eloDownButton = new JButton("Elo LO->HI");
 	
 	public makeSort ( String title ){
 		super( title );
@@ -31,15 +34,90 @@ public class makeSort extends JFrame implements ActionListener{
 		JPanel pane = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
+		c.weightx = 0.5;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(15,15,0,0);
+	    c.gridx = 0;
+	    c.gridy = 0;
+		pane.add(alphaUpButton, c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(15,15,0,0);
+	    c.gridx = 1;
+	    c.gridy = 0;
+		pane.add(alphaDownButton, c);
+		
+		c.weightx = 0.5;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+	    c.gridy = 1;
+		pane.add(eloUpButton, c);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(15,15,0,0);
+	    c.gridx = 1;
+	    c.gridy = 1;
+		pane.add(eloDownButton, c);
+		
+		add(pane);
+		
+		alphaUpButton.addActionListener(this);
+		alphaDownButton.addActionListener(this);
+		eloUpButton.addActionListener(this);
+		eloDownButton.addActionListener(this);
+		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
 	@Override
 	public void actionPerformed( ActionEvent e){
+		
+		JButton button = (JButton)e.getSource();
+		
 		// Destroy and hide the JFrame object
 		setVisible(false);
 		dispose();
+		
+		if(button.equals(alphaUpButton)){
+			try {
+				EditData.alphaSort(">");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} // Destroy and hide the JFrame object
+			setVisible(false);
+			dispose();
+		} else if(button.equals(alphaDownButton)){
+			try {
+				EditData.alphaSort("<");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} // Destroy and hide the JFrame object
+			setVisible(false);
+			dispose();
+		} else if(button.equals(eloUpButton)){
+			try {
+				EditData.eloSort(">");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} // Destroy and hide the JFrame object
+			setVisible(false);
+			dispose();
+		} else if(button.equals(eloDownButton)){
+			try {
+				EditData.eloSort("<");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} // Destroy and hide the JFrame object
+			setVisible(false);
+			dispose();
+		}
+		
 		try {
+			EditData.update();
 			Interface.run();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

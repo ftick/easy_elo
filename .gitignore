@@ -58,3 +58,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /data.txt
+
+data.txt
+src/test.java
